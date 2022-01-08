@@ -9,20 +9,20 @@ public class MoveSoundOnCollision : MonoBehaviour
 
     private void Awake()
     {
-        // Эти компоненты должны быть на кубике. Звук должен быть установлен заранее, PlayOnAwake снят
+        // Р­С‚Рё РєРѕРјРїРѕРЅРµРЅС‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РЅР° РєСѓР±РёРєРµ. Р—РІСѓРє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅ Р·Р°СЂР°РЅРµРµ, PlayOnAwake СЃРЅСЏС‚
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
-        //Двигаем вперед 
+        //Р”РІРёРіР°РµРј РІРїРµСЂРµРґ 
         _rb.MovePosition(transform.position + Vector3.forward * Time.fixedDeltaTime * 5f);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // У цели должен быть тег "Target". Добавить его в инспекторе
+        // РЈ С†РµР»Рё РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ С‚РµРі "Target". Р”РѕР±Р°РІРёС‚СЊ РµРіРѕ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ
         if (collision.gameObject.CompareTag("Target"))
         {
             _audioSource.Play();
